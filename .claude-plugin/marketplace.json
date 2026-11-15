@@ -1,0 +1,12 @@
+{
+  "name": "fiery-night",
+  "owner": { "name": "Kiran Pothana" },
+  "description": "Fiery Night: a dark animated background theme for the Claude desktop app.",
+  "plugins": [
+    {
+      "name": "fiery-night",
+      "source": "./",
+      "description": "A darker sky with ember and violet glows, twinkling stars, rising embers and drifting wisps all around the window"
+    }
+  ]
+}
