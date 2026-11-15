@@ -25,9 +25,9 @@ out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" preserveA
 out.append("""<style>
 text{font:700 11px ui-monospace,Menlo,monospace;text-anchor:middle}
 .s text,.s{font-weight:400;font-size:13px}
-.tw{animation:tw 4s steps(3) infinite}.tw2{animation:tw 6.5s steps(4) infinite}
+.tw{animation:tw 2.4s steps(12) infinite}.tw2{animation:tw 3.6s steps(18) infinite}
 @keyframes tw{0%,100%{opacity:.08}50%{opacity:.6}}
-.ts{animation:ts 7s steps(4) infinite}
+.ts{animation:ts 4s steps(20) infinite}
 @keyframes ts{0%,100%{opacity:.15}50%{opacity:.7}}
 .e1{animation:e1 40s steps(200) infinite}.e2{animation:e2 58s steps(290) infinite}
 @keyframes e1{0%{transform:translateY(0);opacity:0}10%{opacity:.9}100%{transform:translateY(-380px);opacity:0}}
