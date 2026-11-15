@@ -114,6 +114,11 @@ const LOOK: ThemeSetArgs = {{
 
 export const register: Register = on => {{
   on('session.start', async ($, e, next) => {{
+    await $.command.register({{
+      name: 'fiery-night',
+      description: 'Turn the Fiery Night theme on, or off with "/fiery-night off"',
+    }})
+
     // A session with no app attached (a terminal run, `claude -p`) has no theme to set: skip it quietly.
     try {{
       const set = await $.theme.set(LOOK)
@@ -126,6 +131,30 @@ export const register: Register = on => {{
     }}
 
     return next(e)
+  }})
+
+  // "/fiery-night" (or "on") switches the theme on in this chat; "/fiery-night off" goes back to Claude's own look.
+  on('command.run', {{ command: 'fiery-night' }}, async ($, e) => {{
+    const ask = e.args.trim().toLowerCase()
+
+    if (ask !== '' && ask !== 'on' && ask !== 'off') {{
+      return {{ text: 'Type /fiery-night to turn the theme on, or /fiery-night off to turn it off.' }}
+    }}
+
+    // A chat with no app attached (a terminal run) has no theme to change.
+    try {{
+      if (ask === 'off') {{
+        await $.theme.clear()
+
+        return {{ text: 'Fiery Night is off. Type /fiery-night to turn it back on.' }}
+      }}
+
+      const set = await $.theme.set(LOOK)
+
+      return {{ text: set.isDrawn ? 'Fiery Night is on.' : `Fiery Night can't show here: ${{set.reason}}` }}
+    }} catch {{
+      return {{ text: "Fiery Night can't show here: themes only show in the Claude app." }}
+    }}
   }})
 
   on('ui.render', {{ component: 'Backdrop' }}, ($, e, next) => {{

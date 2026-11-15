@@ -14,7 +14,14 @@ In Claude Code, run:
 /plugin install fiery-night@fiery-night
 ```
 
-Then start a new session.
+Then start a new session. The theme turns on by itself in every new chat.
+
+## Turn it on or off
+
+In any chat in the Claude app:
+
+- `/fiery-night` turns the theme on.
+- `/fiery-night off` goes back to Claude's normal look for that chat.
 
 ## Change it
 
